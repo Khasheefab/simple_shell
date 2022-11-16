@@ -90,18 +90,17 @@ typedef struct passinfo
 	char **environ;
 	int env_changed;
 	int status;
-
-	char **cmd_bufcmd_buf; /* pointer to cmd ; chain buffer, for memory management */
+	char *cmd_buf; /* pointer to cmd ; chain buffer, memory management */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
 } info_t;
 
 #define INFO_INIT \
-{ NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \ 0, 0, 0}
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 0, 0, NULL, \ 0, 0, 0}
 
 /**
- * struct builtin -> contains a builtin string and related function
+ * struct builtin -> contains a builtin string related function
  * @type: builtin command flag
  * @func: function
  */
@@ -151,7 +150,7 @@ char *_strnchr(char *, char);
 
 /* toem_tokenizer.c */
 char **strtow(char *, char *);
-char ** strtow2(char *, char);
+char **strtow2(char *, char);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
